@@ -1,5 +1,4 @@
 let cart = [];
-let total = 0;
 
 function addToCart(name, price) {
   let item = cart.find(p => p.name === name);
@@ -16,14 +15,14 @@ function addToCart(name, price) {
 function updateCart() {
   let cartList = document.getElementById("cart-items");
   cartList.innerHTML = "";
-  total = 0;
+  let total = 0;
 
   cart.forEach(item => {
     total += item.price * item.quantity;
 
     let li = document.createElement("li");
     li.innerHTML = `
-      ${item.name} - ₹${item.price} x ${item.quantity}
+      ${item.name} x ${item.quantity}
       <button onclick="changeQty('${item.name}',1)">+</button>
       <button onclick="changeQty('${item.name}',-1)">-</button>
     `;
@@ -31,6 +30,7 @@ function updateCart() {
   });
 
   document.getElementById("total").innerText = total;
+  document.getElementById("cart-count").innerText = cart.length;
 }
 
 function changeQty(name, change) {
@@ -38,7 +38,6 @@ function changeQty(name, change) {
 
   if (item) {
     item.quantity += change;
-
     if (item.quantity <= 0) {
       cart = cart.filter(p => p.name !== name);
     }
@@ -47,11 +46,15 @@ function changeQty(name, change) {
   updateCart();
 }
 
+function toggleCart() {
+  document.getElementById("cart-panel").classList.toggle("active");
+}
+
 function placeOrder() {
   let address = document.getElementById("address").value;
 
   if (cart.length === 0) {
-    alert("Cart is empty!");
+    alert("Cart empty!");
     return;
   }
 
@@ -60,7 +63,7 @@ function placeOrder() {
     return;
   }
 
-  alert("🎉 Order placed successfully!");
+  alert("🎉 Order placed!");
   cart = [];
   updateCart();
 }
