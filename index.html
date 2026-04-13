@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Pizza Order System</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Smart Pizza</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
   <h1>🍕 Smart Pizza</h1>
+  <button onclick="toggleCart()">🛒 Cart (<span id="cart-count">0</span>)</button>
 </header>
 
 <section class="menu">
-  <h2>Menu</h2>
 
-  <div class="pizza">
+  <div class="card">
+    <img src="https://source.unsplash.com/300x200/?pizza" />
     <h3>Margherita</h3>
     <p>₹199</p>
     <button onclick="addToCart('Margherita',199)">Add</button>
   </div>
 
-  <div class="pizza">
+  <div class="card">
+    <img src="https://source.unsplash.com/300x200/?cheese-pizza" />
     <h3>Farmhouse</h3>
     <p>₹299</p>
     <button onclick="addToCart('Farmhouse',299)">Add</button>
   </div>
 
-  <div class="pizza">
+  <div class="card">
+    <img src="https://source.unsplash.com/300x200/?paneer-pizza" />
     <h3>Peppy Paneer</h3>
     <p>₹249</p>
     <button onclick="addToCart('Peppy Paneer',249)">Add</button>
@@ -34,17 +37,14 @@
 
 </section>
 
-<section class="cart">
-  <h2>🛒 Cart</h2>
+<!-- CART PANEL -->
+<div id="cart-panel">
+  <h2>Your Cart</h2>
   <ul id="cart-items"></ul>
   <h3>Total: ₹<span id="total">0</span></h3>
-</section>
-
-<section class="checkout">
-  <h2>Checkout</h2>
   <input type="text" placeholder="Enter Address" id="address">
-  <button onclick="placeOrder()">Place Order</button>
-</section>
+  <button onclick="placeOrder()">Checkout</button>
+</div>
 
 <script src="script.js"></script>
 </body>
