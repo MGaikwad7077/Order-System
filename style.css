@@ -1,37 +1,72 @@
 body {
-  font-family: Arial;
-  background: #f5f5f5;
   margin: 0;
+  font-family: 'Segoe UI';
+  background: linear-gradient(120deg, #ff9966, #ff5e62);
 }
 
 header {
-  background: #ff4d4d;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: rgba(0,0,0,0.3);
   color: white;
-  text-align: center;
-  padding: 15px;
+  backdrop-filter: blur(10px);
 }
 
-.menu, .cart, .checkout {
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   padding: 20px;
 }
 
-.pizza {
-  background: white;
+.card {
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(15px);
+  margin: 15px;
   padding: 15px;
-  margin: 10px;
-  display: inline-block;
+  width: 250px;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
   border-radius: 10px;
-  box-shadow: 0 0 10px gray;
 }
 
 button {
-  background: green;
-  color: white;
+  background: #00c853;
   border: none;
-  padding: 8px;
+  padding: 10px;
+  color: white;
+  border-radius: 8px;
   cursor: pointer;
 }
 
 button:hover {
-  background: darkgreen;
+  background: #009624;
+}
+
+/* CART PANEL */
+#cart-panel {
+  position: fixed;
+  right: -350px;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background: white;
+  padding: 20px;
+  transition: 0.4s;
+  overflow-y: auto;
+}
+
+#cart-panel.active {
+  right: 0;
 }
